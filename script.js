@@ -333,3 +333,43 @@ function updateTimes() {
     updateScheduleDisplay();
   }
 }
+
+// Tooltip functionality for mobile and click support
+document.addEventListener("DOMContentLoaded", () => {
+  const tooltipTriggers = document.querySelectorAll(".tooltip-trigger");
+
+  tooltipTriggers.forEach((trigger) => {
+    // Toggle tooltip on click/tap
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Close other tooltips
+      tooltipTriggers.forEach((other) => {
+        if (other !== trigger) {
+          other.classList.remove("active");
+        }
+      });
+
+      // Toggle this tooltip
+      trigger.classList.toggle("active");
+    });
+
+    // Allow keyboard navigation
+    trigger.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        trigger.classList.toggle("active");
+      }
+    });
+  });
+
+  // Close tooltips when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".tooltip-trigger")) {
+      tooltipTriggers.forEach((trigger) => {
+        trigger.classList.remove("active");
+      });
+    }
+  });
+});
