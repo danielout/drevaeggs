@@ -8,10 +8,14 @@ let timeOffset = 0;
 
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
-  // Load saved offset from localStorage
+  // Load saved offset from localStorage, or calculate from user's timezone
   const savedOffset = localStorage.getItem("timeOffset");
   if (savedOffset !== null) {
     timeOffset = parseFloat(savedOffset);
+  } else {
+    // Auto-detect timezone offset from US Eastern
+    timeOffset = calculateTimezoneOffset();
+    localStorage.setItem("timeOffset", timeOffset);
   }
   updateOffsetDisplay();
 
@@ -37,6 +41,23 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial schedule display
   updateScheduleDisplay();
 });
+
+function calculateTimezoneOffset() {
+  // Get the user's local time and US Eastern time
+  const now = new Date();
+  const localTime = now.getTime();
+
+  // Get US Eastern time
+  const easternTime = new Date(
+    now.toLocaleString("en-US", { timeZone: "America/New_York" })
+  ).getTime();
+
+  // Calculate the difference in hours
+  const diffMs = localTime - easternTime;
+  const diffHours = Math.round(diffMs / (1000 * 60 * 60));
+
+  return diffHours;
+}
 
 function updateOffsetDisplay() {
   const offsetValue = document.getElementById("offsetValue");
