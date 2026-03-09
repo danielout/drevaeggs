@@ -24,14 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
     timeOffset = Math.min(12, timeOffset + 0.5);
     localStorage.setItem("timeOffset", timeOffset);
     updateOffsetDisplay();
-    updateScheduleDisplay();
+    updateTimes(); // Update all times immediately
   });
 
   document.getElementById("offsetMinus").addEventListener("click", () => {
     timeOffset = Math.max(-12, timeOffset - 0.5);
     localStorage.setItem("timeOffset", timeOffset);
     updateOffsetDisplay();
-    updateScheduleDisplay();
+    updateTimes(); // Update all times immediately
   });
 
   // Start updating times
@@ -141,21 +141,31 @@ function updateCountdown(serverTime, nextRun) {
   let currentPhase = "";
   let targetTime = nextRun;
 
-  if (serverTime >= nextRun) {
-    // Run has started or ended
-    const runEndTime = new Date(nextRun);
-    runEndTime.setMinutes(runEndTime.getMinutes() + 30); // Assume 30 min run duration
+  // Check if we're currently in an active run (within 1 hour after any scheduled run time)
+  let isInActiveRun = false;
+  let activeRunEndTime = null;
 
-    if (serverTime < runEndTime) {
-      currentPhase = "RUN IN PROGRESS!";
-      phaseIndicator.className = "phase-status run-active";
-      milestone1.classList.add("completed");
-      milestone2.classList.add("completed");
-      milestone3.classList.add("active");
-    } else {
-      currentPhase = "Waiting for Next Run";
-      phaseIndicator.className = "phase-status waiting";
+  for (let run of EGG_RUN_TIMES) {
+    const runStartTime = new Date(serverTime);
+    runStartTime.setHours(run.hour, run.minute, 0, 0);
+
+    const runEndTime = new Date(runStartTime);
+    runEndTime.setHours(runEndTime.getHours() + 1);
+
+    if (serverTime >= runStartTime && serverTime < runEndTime) {
+      isInActiveRun = true;
+      activeRunEndTime = runEndTime;
+      break;
     }
+  }
+
+  if (isInActiveRun) {
+    currentPhase = "RUN IN PROGRESS!";
+    phaseIndicator.className = "phase-status run-active";
+    milestone1.classList.add("completed");
+    milestone2.classList.add("completed");
+    milestone3.classList.add("active");
+    targetTime = activeRunEndTime;
   } else if (serverTime >= portalTime) {
     currentPhase = "Portal Open - Get Ready!";
     phaseIndicator.className = "phase-status portal-ready";

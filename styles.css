@@ -284,13 +284,13 @@ h3 {
 }
 
 .phase-status.grouping {
-    background: rgba(59, 130, 246, 0.2);
-    color: #60a5fa;
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
 }
 
 .phase-status.portal-ready {
-    background: rgba(139, 92, 246, 0.2);
-    color: var(--primary);
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
 }
 
 .phase-status.run-active {
