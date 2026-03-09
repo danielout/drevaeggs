@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DrevaEggs.com - Dreva Server Egg Run Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🥚 Dreva Eggs 🥚</h1>
+      </header>
+
+      <main>
+        <!-- Top Info Bar -->
+        <section class="info-bar">
+          <div class="card compact-card time-card">
+            <h3>Server Time</h3>
+            <div class="compact-time" id="serverTime">--:--:--</div>
+            <small class="time-label">US Eastern</small>
+          </div>
+
+          <div class="card compact-card time-card">
+            <h3>Your Time</h3>
+            <div class="compact-time" id="localTime">--:--:--</div>
+            <div class="offset-control">
+              <label>Offset:</label>
+              <button class="offset-btn" id="offsetMinus">−</button>
+              <span class="offset-value" id="offsetValue">0</span>
+              <button class="offset-btn" id="offsetPlus">+</button>
+            </div>
+          </div>
+
+          <div class="card compact-card status-card">
+            <h3>Door Status</h3>
+            <div class="status-indicator">
+              <span class="status-dot" id="doorStatus"></span>
+              <span id="doorStatusText">Checking...</span>
+            </div>
+          </div>
+
+          <div class="card compact-card schedule-card">
+            <h3>Scheduled Runs</h3>
+            <div class="compact-schedule" id="scheduleList"></div>
+          </div>
+
+          <div class="card compact-card portal-card">
+            <h3>Teleport Code</h3>
+            <div class="teleport-code">0019</div>
+            <small class="code-label">TP Code</small>
+          </div>
+        </section>
+
+        <!-- Main Countdown Section -->
+        <section class="countdown-section">
+          <div class="card countdown-card">
+            <div class="phase-indicator" id="phaseIndicator">
+              <div class="phase-status"></div>
+            </div>
+            <div class="countdown" id="countdown">
+              <div class="countdown-item">
+                <span class="countdown-value" id="hours">00</span>
+                <span class="countdown-label">Hours</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-value" id="minutes">00</span>
+                <span class="countdown-label">Minutes</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-value" id="seconds">00</span>
+                <span class="countdown-label">Seconds</span>
+              </div>
+            </div>
+            <div class="next-run-time" id="nextRunTime"></div>
+            <div class="milestones">
+              <div class="milestone" id="milestone1">
+                <span class="milestone-icon">👥</span>
+                <span class="milestone-text"
+                  >Group Formation: <strong id="groupTime">--:--</strong></span
+                >
+              </div>
+              <div class="milestone" id="milestone2">
+                <span class="milestone-icon">🌀</span>
+                <span class="milestone-text"
+                  >Portal Opens: <strong id="portalTime">--:--</strong></span
+                >
+              </div>
+              <div class="milestone" id="milestone3">
+                <span class="milestone-icon">🥚</span>
+                <span class="milestone-text"
+                  >Run Starts: <strong id="runTime">--:--</strong></span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Rules Section -->
+        <section class="rules-section">
+          <div class="left-column">
+            <div class="card info-card">
+              <h3>🥚What is egg?🥚</h3>
+              <ul class="rules-list">
+                <li>
+                  Community organized social "raid" to stomp eggs, kill bugs,
+                  get loot.
+                </li>
+                <li>
+                  Available to join for anyone with 25 in Teleportation and 2
+                  Aquamarines!
+                </li>
+                <li>
+                  Level 90+ item rewards from bosses and elites open to all, as
+                  is Xogrite.
+                </li>
+                <li>
+                  Full quest rewards require level 70 combat skills to unlocks.
+                </li>
+                <li>
+                  Knight eggs, Queen, and Princess on 3hr boss loot cooldown.
+                </li>
+                <li>Xogrite on 72hr cooldown.</li>
+                <li>Love egg.</li>
+              </ul>
+            </div>
+            <div class="card info-card">
+              <h3>🥚Egg Best Practices🥚</h3>
+              <ul class="rules-list">
+                <li>
+                  Come prepared! Have your 2x Aquamarines for teleport machine,
+                  food/snack, diamonds for rez, and inventory space.
+                </li>
+                <li>
+                  Get to level 45 first aid, go buy some pineal juice (NPC in
+                  serb sells it), and gift it to the fairy in sun vale to learn
+                  Resuscitate. Yes it costs money. Yes you're saving for
+                  something. So is everyone. Do your part and get this unlocked.
+                  A single egg run will more than cover this cost.
+                </li>
+                <li>
+                  I said it before, but <i>don't AOE</i> during egg run. Leading
+                  cause of death.
+                </li>
+                <li>When you see the cocks, nuke the cocks.</li>
+                <li>
+                  Share the harvestables along the route - don't hog them all.
+                </li>
+                <li>If you are new, let experienced people pull.</li>
+                <li>
+                  Dying a lot? We all have bad days. Stick to the back and save
+                  your friends diamonds.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card info-card">
+            <h3>🥚How to egg?🥚</h3>
+            <ul class="rules-list">
+              <li>For up to date info, /join eggrun</li>
+              <li>
+                Get to the casino, let people know you're looking for a group
+              </li>
+              <li>
+                When someone opens a portal in casino, hop in! Thank them.
+              </li>
+              <li>
+                When at the teleporter machine, enter the code `0019` (this is
+                what the aquas are for)
+              </li>
+              <li>
+                If you're 70+, talk to Cheb. Cheb is your new friend. Love Cheb.
+              </li>
+              <li>
+                Group leader? Type `/loot unchecked` - Group member? Type
+                `/loot` and make sure you lead set it to unchecked
+              </li>
+              <li>
+                When the door opens, follow the mob of people. Bug murder and
+                egg smashing commence.
+              </li>
+              <li>
+                Do not AOE the big bugs! They have a thorns effect on taking AOE
+                damage that <i>will kill you</i>.
+              </li>
+              <li>
+                Loot knight eggs, smash royal eggs, collect xogrite, loot elites
+                and bosses (Queen/Princess).
+              </li>
+              <li>
+                The average run currently takes Dreva 20m to 30m to finish.
+              </li>
+              <li>After run is completed is book swap!</li>
+              <ul class="book-swap">
+                <li>
+                  Everyone links the skill books and recipes that dropped for
+                  them during the run.
+                </li>
+                <li>
+                  If you see something you want, message the person it dropped
+                  for.
+                </li>
+                <li>
+                  Trades for other wanted items are preferred, but trading equal
+                  value books or the vendor value of a book is also acceptable.
+                </li>
+                <li>
+                  In the instance multiple people want the same book from a
+                  person, an auction or some other method is appropriate to
+                  decide.
+                </li>
+                <li>
+                  You will likely end up with a bunch of books you don't need.
+                  Flia and Cheb are great to sell these books to.
+                </li>
+                <li>
+                  Don't expect to say what you're looking for and have everyone
+                  check their own inventory for your books - you'll have most
+                  success by being proactive.
+                </li>
+                <li>
+                  Feel free to offer 2x books if you don't have one of the same
+                  value for trade. Most folks are fine with this.
+                </li>
+              </ul>
+              <li>
+                Cheb will give extra rewards if you are 70+ once the timer
+                reaches 0. Sub-70s feel free to leave before this.
+              </li>
+              <li>Love egg.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>❤️ you Dreva players -- xoxo Zenith (stop by CA-4 today!)</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
