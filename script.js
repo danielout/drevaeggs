@@ -325,6 +325,20 @@ function updateTimes() {
   const nextRun = getNextEggRun(serverTime);
   updateCountdown(serverTime, nextRun);
 
+  // Update page title with countdown to next run start
+  const titleDiff = nextRun - serverTime;
+  if (titleDiff > 0) {
+    const titleH = Math.floor(titleDiff / (1000 * 60 * 60));
+    const titleM = Math.floor((titleDiff % (1000 * 60 * 60)) / (1000 * 60));
+    const titleS = Math.floor((titleDiff % (1000 * 60)) / 1000);
+    const titleCountdown = titleH > 0
+      ? `${titleH}h ${String(titleM).padStart(2, "0")}m ${String(titleS).padStart(2, "0")}s`
+      : `${titleM}m ${String(titleS).padStart(2, "0")}s`;
+    document.title = `${titleCountdown} - Dreva Server Egg Runs`;
+  } else {
+    document.title = "RUN ACTIVE - Dreva Server Egg Runs";
+  }
+
   // Update door status
   updateDoorStatus(serverTime);
 
