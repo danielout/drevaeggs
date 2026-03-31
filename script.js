@@ -180,7 +180,7 @@ function updateCountdown(serverTime, nextRun) {
   } else {
     currentPhase = "Waiting for Next Run";
     phaseIndicator.className = "phase-status waiting";
-    targetTime = groupTime;
+    targetTime = portalTime;
   }
 
   phaseIndicator.textContent = currentPhase;
