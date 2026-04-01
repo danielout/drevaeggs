@@ -2,6 +2,7 @@
 const EGG_RUN_TIMES = [
   { hour: 14, minute: 45 }, // 2:45 PM
   { hour: 18, minute: 45 }, // 6:45 PM
+  { hour: 22, minute: 45 }, // 6:45 PM
 ];
 
 let timeOffset = 0;
