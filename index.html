@@ -115,7 +115,8 @@
                   is Xogrite.
                 </li>
                 <li>
-                  Full quest rewards, including skill books, require level 70 combat skills to unlock.
+                  Full quest rewards, including skill books, require level 70
+                  combat skills to unlock.
                 </li>
                 <li>
                   Knight eggs, Queen, and Princess <i>might</i> be on 3hr boss
@@ -163,6 +164,26 @@
                 </li>
               </ul>
             </div>
+            <div class="card info-card">
+              <h3>🥚DIY Egg!🥚</h3>
+              <ul class="rules-list">
+                <li>
+                  Egg can be run every two hours, you don't have to stick to the
+                  schedule.
+                </li>
+                <li>
+                  Doing eggrun as 1-3 6-player groups can be a fun change of
+                  pace from the normal zerg runs.
+                </li>
+                <li>
+                  If you don't like the current scheduled times, organize your
+                  own! Make sure someone is around to open the portal, run it
+                  regularly at that time a few times, and let Zenith know to add
+                  it to the page.
+                </li>
+                <li>Embrace the egg.</li>
+              </ul>
+            </div>
           </div>
           <div class="card info-card">
             <h3>🥚How to egg?🥚</h3>
@@ -198,7 +219,7 @@
                 and bosses (Queen/Princess).
               </li>
               <li>
-                The average run currently takes Dreva 20m to 30m to finish.
+                The average run currently takes Dreva 15m to 20m to finish.
               </li>
               <li>After run is completed is book swap!</li>
               <ul class="book-swap">
@@ -248,6 +269,72 @@
       </footer>
     </div>
 
+    <!-- Poetry Jam Floating Button -->
+    <button class="poetry-jam-btn" id="poetryJamBtn">
+      <img src="images/chapbook.png" alt="Poetry Jam" class="poetry-jam-icon" />
+      <div class="poetry-jam-info">
+        <span class="poetry-jam-label">Next poetry jam...</span>
+        <span class="poetry-jam-next-name" id="poetryJamNextName">--</span>
+        <span class="poetry-jam-countdown" id="poetryJamCountdown">--:--</span> 
+      </div>
+    </button>
+
+    <!-- Poetry Jam Popup -->
+    <div class="poetry-jam-overlay" id="poetryJamOverlay"></div>
+    <div class="poetry-jam-popup" id="poetryJamPopup">
+      <div class="poetry-jam-popup-header">
+        <h3>
+          <img
+            src="images/chapbook.png"
+            alt=""
+            class="poetry-jam-header-icon" />
+          Poetry Jams
+        </h3>
+        <button class="poetry-jam-close" id="poetryJamClose">&times;</button>
+      </div>
+      <div class="poetry-jam-popup-body">
+        <div id="poetryJamList"></div>
+        <div class="poetry-jam-info-cards">
+          <div class="poetry-jam-info-card">
+            <h4>How to Jam</h4>
+            <ul>
+              <li>TLDR: Just show up!</li>
+              <li>Drink the booze, dance or play music, and rate poetry.</li>
+              <li>Trade with the designated host for a free poetry book if you want.</li>
+              <li>Interact with the poetry podium to write and submit your poem.</li>
+              <li>Garbage text poems are frowned upon; even a simple haiku is better!</li>
+              <li>No paid raffles/vendors at the jams - keep those outside please.</li>
+              <li>At the end of the jam, statues are usually placed. Get your extra buffs, and go forth! Be merry!</li>
+            </ul>
+          </div>
+          <div class="poetry-jam-info-card">
+            <h4>What is a Poetry Jam?</h4>
+            <ul>
+              <li>Community-organized party to stack a bunch of social buffs, gain xp in oratory and poetry appreciation, and generally hang out and have fun with your server folks.</li>
+              <li>Wholly community run and funded - these are your fellow players volunteering their time and resources for everyone.</li>
+              <li>Is there not a jam at a time you like? Host your own! Reach out to Zenith to have it added to the schedule if it is a repeating jam. Talk to current hosts for advice on getting it setup.</li>
+            </ul>
+          </div>
+          <div class="poetry-jam-info-card">
+            <h4>How to Contribute</h4>
+            <ul>
+              <li>Jams always need more Gruzark's Chapbooks! These can be looted from Gruzark in the goblin dungeon once every three hours.</li>
+              <li>Contributing raffle prizes, statues, and booze is also super helpful.</li>
+              <li>Showing up and participating in the chaos is a contribution of its own.</li>
+              <li>To make donations, reach out to:</li>
+            </ul>
+            <ul class="donation-contacts" id="donationContacts"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="egg-rain-container" id="eggRainContainer"></div>
+    <button class="egg-toggle-btn active" id="eggToggle">🥚 Egg-citement: ON</button>
+
+    <script src="config.js"></script>
+    <script src="egg.js"></script>
+    <script src="jam.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
