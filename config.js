@@ -15,7 +15,7 @@ const POETRY_JAMS = [
   {
     name: "Sunday Jam",
     guild: "House of Renthian",
-    location: "Serbule Inn, Casino",
+    location: "Serbule Inn",
     recurrence: "weekly",
     dayOfWeek: 0, // Sunday
     hour: 14,
